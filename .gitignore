@@ -142,4 +142,7 @@ uploads/
 # SvelteKit build / generate output
 .svelte-kit
 
+# Sapper build / generate output
+*.traineddata
+
 # End of https://www.toptal.com/developers/gitignore/api/node

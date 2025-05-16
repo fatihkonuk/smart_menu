@@ -1,5 +1,12 @@
+import fs from "fs";
 import multer from "multer";
 import path from "path";
+
+const uploadDir = path.join(__dirname, "../..", "uploads");
+
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir);
+}
 
 // Upload klasörünü ve dosya adını ayarla
 const storage = multer.diskStorage({

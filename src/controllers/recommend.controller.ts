@@ -3,6 +3,7 @@ import path from "path";
 import { GeminiService } from "../services";
 import { extractTextFromImage } from "../services/tesseract.service";
 import { generatePrompt } from "../helpers/prompt.helpers";
+import { marked } from "marked";
 
 export const getRecommend = async (req: Request, res: Response) => {
   try {
@@ -17,8 +18,9 @@ export const getRecommend = async (req: Request, res: Response) => {
 
     const geminiRawResponse = await GeminiService.generateResponse(promptText);
     const message = geminiRawResponse.candidates[0].content.parts[0].text;
+    const htmlOutput = marked.parse(message);
 
-    res.status(200).json({ message });
+    res.status(200).json({ message: htmlOutput });
   } catch (error) {
     console.error("Error in getRecommend:", error);
     res.status(500).json({ error: "Internal Server Error" });

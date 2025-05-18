@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from "express";
+import { CustomError } from "../utils/createError";
 
 const errorHandler = (
   err: Error,
@@ -7,6 +8,15 @@ const errorHandler = (
   next: NextFunction
 ) => {
   console.error("Hata yakalandı:", err.stack);
+
+  if (err instanceof CustomError) {
+    res.status(err.statusCode).json({
+      success: false,
+      error: err.errorType,
+      message: err.message,
+    });
+    return;
+  }
 
   // Özel hata türlerine göre ayarlamalar
   if (err.name === "ValidationError") {

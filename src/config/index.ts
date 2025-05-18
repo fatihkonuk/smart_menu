@@ -1,5 +1,8 @@
 export default {
   port: process.env.PORT || 5000,
+  db: {
+    uri: process.env.MONGODB_URI ,
+  },
   gemini: {
     apiKey: process.env.GEMINI_API_KEY,
   },

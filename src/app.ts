@@ -1,12 +1,17 @@
 import express from "express";
 import cors from 'cors';
-import multer from 'multer';
 import "dotenv/config";
 import routes from "./routes";
 import {ErrorHandler, Logger} from "./middlewares/";
+import connectMongo from "./config/mongodb";
 
 // Create an Express application
 const app = express();
+
+// Connect to the database
+(async () => {
+  await connectMongo(); // MongoDB bağlantısı
+})();
 
 // Middleware
 app.use(express.json());

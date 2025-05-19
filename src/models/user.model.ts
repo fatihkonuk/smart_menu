@@ -31,6 +31,10 @@ const UserSchema = new Schema<User>(
       type: String,
       required: false,
     },
+    allergies: {
+      type: String,
+      required: false,
+    },
     age: {
       type: Number,
       required: false,

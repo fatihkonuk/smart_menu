@@ -4,6 +4,7 @@ export type User = {
   username: string;
   password: string;
   avatar: string;
+  allergies: string;
   gender?: 0 | 1;
   age?: number;
   lastLogin: Date;
@@ -20,6 +21,7 @@ export type UserCreate = {
   fullName: string;
   username: string;
   password: string;
+  allergies: string;
   gender?: 0 | 1 | 2;
   age?: number;
 };

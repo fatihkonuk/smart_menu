@@ -30,9 +30,9 @@ export const login = async (req: Request, res: Response) => {
 };
 
 export const register = async (req: Request, res: Response) => {
-  const { fullName, username, password, age, gender } = req.body;
-  if (!fullName || !username || !password) {
-    throw createError("Full name, username, and password are required", ErrorTypes.BadRequestError);
+  const { fullName, username, password, allergies, age, gender } = req.body;
+  if (!fullName || !username || !password || !allergies) {
+    throw createError("Full name, username, allergies and password are required", ErrorTypes.BadRequestError);
   }
   const existingUser = await UserRepository.getByUsername(username);
 
@@ -46,6 +46,7 @@ export const register = async (req: Request, res: Response) => {
     fullName,
     username,
     password: hashedPassword,
+    allergies,
     age,
     gender,
   });

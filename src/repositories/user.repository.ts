@@ -16,6 +16,11 @@ class UserRepository {
     return await this.applySelect(query, select);
   }
 
+  async getByToken(token: string, select?: string): Promise<User | null> {
+    const query = UserModel.findOne({ "sessionToken.token": token });
+    return await this.applySelect(query, select);
+  }
+
   async getByUsername(username: string, select?: string): Promise<User | null> {
     const query = UserModel.findOne({ username });
     return await this.applySelect(query, select);

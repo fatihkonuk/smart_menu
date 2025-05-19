@@ -1,4 +1,5 @@
 import ErrorHandler from './errorHandler';
 import Logger from './logger';
+import TokenHandler from './tokenHandler';
 
-export { ErrorHandler, Logger };
+export { ErrorHandler, Logger, TokenHandler };
